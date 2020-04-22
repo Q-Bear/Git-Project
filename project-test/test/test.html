@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html{
+        font-size: 62.5%;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 20rem;
+        height:20rem;
+        margin: 10rem auto;
+        background-color: chartreuse;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box1{
+        width:10rem;
+        height: 10rem;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+    </div>
+    <script>
+        Array.prototype.removeDup = function(){
+                var result = [];
+                var obj = {};
+                console.log(this)
+                for(var i = 0; i < this.length; i++){
+                    if(!obj[this[i]]){
+                        result.push(this[i]);
+                        obj[this[i]] = 1;
+                    }
+                }
+
+                return result;
+            }
+
+            var arr = [1,2,3,1,2,2,5,2,"测试","test","测试","test"];
+            console.log(arr.removeDup());
+
+            var promise = new Promise(function(success, failed){
+                // success(); //成功
+                failed();   //失败
+            })
+            console.log(promise)
+            promise.then(function(){
+                //成功的时候调用的函数
+                console.log("承诺成功!")
+            },function(){
+                //失败的时候调用的函数
+                console.log("承诺失败!")
+            })
+
+            // function ajaxGet(url,data){
+            //     var promise = new Promise(function(){
+            //         var ajaxResp = new XMLHttpRequest();
+            //         ajaxResp.open("GET",url);
+            //         ajaxResp.send(null);
+            //         ajaxResp.onreadystatechange = function(){
+            //             if(ajaxResp.readyState == 4 && ajaxResp.status == 200){
+            //                 success(ajaxResp.responseText);
+            //             }
+            //         }
+
+            //     })
+            //     return promise;
+            // }
+            // ajaxGet("url").then(function(res){
+            //     console.log("ajax请求成功")
+            //     console.log(res)
+            // },function(){
+            //     console.log("ajax请求失败")
+            // })
+    </script>
+</body>
+</html>
