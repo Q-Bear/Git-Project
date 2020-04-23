@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajaxGet(url,data){
+            var promise = new Promise(function(success,failed){
+
+                if(data){
+                    url += "?" + data;
+                }
+
+                var ajaxResp = new XMLHttpRequest();
+                ajaxResp.open("GET",url);
+                ajaxResp.send(null);
+                ajaxResp.onreadystatechange = function(){
+                    if(ajaxResp.readyState == 4 && ajaxResp.status == 200){
+                        success(ajaxResp.responseText);
+                    }
+                }
+
+            })
+            return promise;
+        }
+        ajaxGet("/data.json")
+        .then(function(res){
+            console.log("ajax请求成功")
+            console.log(res)
+        },function(){
+            console.log("ajax请求失败")
+        })
+    </script>
+</body>
+</html>
